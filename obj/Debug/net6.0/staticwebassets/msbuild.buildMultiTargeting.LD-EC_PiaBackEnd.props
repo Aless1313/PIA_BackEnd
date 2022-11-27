@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\LD-EC_PiaBackEnd.props" />
+</Project>
