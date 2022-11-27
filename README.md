@@ -37,4 +37,5 @@ Equipo de desarrolladores:
 
 Grupo 037
 Profesor: Rodríguez Martínez Gustavo Adolfo
-Facultad de Ciencias Físico Matemáticas de la UANL
+
+#### Facultad de Ciencias Físico Matemáticas de la UANL
