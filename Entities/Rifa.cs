@@ -14,6 +14,6 @@ namespace LD_EC_PiaBackEnd.Entities
 
         public List<Games> Games { get; set; }
 
-        public List<Premio> ListaPremios { get; set; }
+        public List<Prize> ListPrize { get; set; }
     }
 }
