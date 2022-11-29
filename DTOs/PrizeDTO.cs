@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LD_EC_PiaBackEnd.DTOs
 {
-    public class Prize
+    public class PrizeDTO
     {
         [Required]
         public int idRifa { get; set; }

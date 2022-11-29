@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LD_EC_PiaBackEnd.DTOs
 {
-    public class GetPlayerDTOs
+    public class GetGamesDTOs
     {
         public int id { get; set; }
         public string id_players { get; set; }

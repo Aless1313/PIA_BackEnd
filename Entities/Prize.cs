@@ -14,5 +14,7 @@ namespace LD_EC_PiaBackEnd.Entities
         public string name_prize { get; set;  }
 
         public bool available_prize { get; set; }
+
+        public string descripcion { get; set; }
     }
 }
