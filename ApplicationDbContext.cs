@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LD_EC_PiaBackEnd.Entities;
-
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace LD_EC_PiaBackEnd
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {

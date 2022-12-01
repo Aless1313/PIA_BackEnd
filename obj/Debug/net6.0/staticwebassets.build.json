@@ -1,11 +1,37 @@
 {
   "Version": 1,
-  "Hash": "lXwnoeTNMIRA3TyZVXiHAGNuxZ9Jb6/tjdAfIDfT0M8=",
+  "Hash": "I1wWytwXZB7V7tBlQcGsm73+Mcj62MVoMCkooFUNPas=",
   "Source": "LD-EC_PiaBackEnd",
   "BasePath": "_content/LD-EC_PiaBackEnd",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "LD-EC_PiaBackEnd\\wwwroot",
+      "Source": "LD-EC_PiaBackEnd",
+      "ContentRoot": "C:\\Users\\Liz Elizondo\\Desktop\\PIA_BackEnd\\wwwroot\\",
+      "BasePath": "_content/LD-EC_PiaBackEnd",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Liz Elizondo\\Desktop\\PIA_BackEnd\\wwwroot\\log.txt",
+      "SourceId": "LD-EC_PiaBackEnd",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Liz Elizondo\\Desktop\\PIA_BackEnd\\wwwroot\\",
+      "BasePath": "_content/LD-EC_PiaBackEnd",
+      "RelativePath": "log.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\log.txt"
+    }
+  ]
 }

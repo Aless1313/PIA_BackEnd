@@ -44,7 +44,7 @@ namespace LD_EC_PiaBackEnd.Controllers
 
         [AllowAnonymous]
         [HttpPost("RegistrarUsuario")]
-        public async Task<ActionResult<RespuestaAuthenticacion>> Registrar (CredencialsUsersDTOs credencials)
+        public async Task<ActionResult<RespuestaAuthenticacion>> Registrar(CredencialsUsersDTOs credencials)
         {
             var user = new IdentityUser { UserName = credencials.email, Email = credencials.email };
             var result = await userManager.CreateAsync(user, credencials.password);
