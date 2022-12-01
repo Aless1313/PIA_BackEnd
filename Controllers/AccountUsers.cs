@@ -44,7 +44,7 @@ namespace LD_EC_PiaBackEnd.Controllers
 
         [AllowAnonymous]
         [HttpPost("Registrar-Usuario")]
-        public async Task<ActionResult<RespuestaAuthenticacion>> Registrar (CredencialsUsers credencials)
+        public async Task<ActionResult<RespuestaAuthenticacion>> Registrar (CredencialsUsersDTOs credencials)
         {
             var user = new IdentityUser { UserName = credencials.email, Email = credencials.email };
             var result = await userManager.CreateAsync(user, credencials.password);
@@ -72,7 +72,7 @@ namespace LD_EC_PiaBackEnd.Controllers
 
         [AllowAnonymous]
         [HttpPost("IniciarSesion")]
-        public async Task<ActionResult<RespuestaAuthenticacion>> login(CredencialsUsers credencials)
+        public async Task<ActionResult<RespuestaAuthenticacion>> login(CredencialsUsersDTOs credencials)
         {
             var result = await signInManager.PasswordSignInAsync(credencials.email, credencials.password, isPersistent: false, lockoutOnFailure: false);
 
@@ -94,7 +94,7 @@ namespace LD_EC_PiaBackEnd.Controllers
             var emailclaim = HttpContext.User.Claims.Where(claim => claim.Type == "email").FirstOrDefault();
             var mail = emailclaim.Value;
 
-            var credentials = new CredencialsUsers()
+            var credentials = new CredencialsUsersDTOs()
             {
                 email = mail
             };
@@ -102,7 +102,7 @@ namespace LD_EC_PiaBackEnd.Controllers
         }
 
         [HttpPost("HacerAdmin")]
-        public async Task<ActionResult> HacerAdmin(EditarAdmin editarAdmin)
+        public async Task<ActionResult> HacerAdmin(EditarAdminDTOs editarAdmin)
         {
             var user = await userManager.FindByEmailAsync(editarAdmin.email);
 
@@ -112,7 +112,7 @@ namespace LD_EC_PiaBackEnd.Controllers
         }
 
         [HttpPost("QuitarAdmin")]
-        public async Task<ActionResult>QuitarAdmin(EditarAdmin editarAdmin)
+        public async Task<ActionResult>QuitarAdmin(EditarAdminDTOs editarAdmin)
         {
             var user = await userManager.FindByEmailAsync(editarAdmin.email);
 
@@ -121,7 +121,7 @@ namespace LD_EC_PiaBackEnd.Controllers
             return NoContent();
         }
 
-        private async Task<RespuestaAuthenticacion> BuildToken(CredencialsUsers credencials)
+        private async Task<RespuestaAuthenticacion> BuildToken(CredencialsUsersDTOs credencials)
         {
             var claims = new List<Claim>()
             {

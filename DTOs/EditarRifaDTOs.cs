@@ -2,7 +2,7 @@
 
 namespace LD_EC_PiaBackEnd.DTOs
 {
-    public class EditarRifa
+    public class EditarRifaDTOs
     {
         public int id { get; set; }
         [StringLength(maximumLength: 80, ErrorMessage = "The {0} field can only be up to 100 characters")]

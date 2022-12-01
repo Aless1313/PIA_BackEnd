@@ -27,7 +27,7 @@ namespace LD_EC_PiaBackEnd.Utilities
                 .ForMember(getrifaDTO => getrifaDTO.games, opciones => opciones.MapFrom(RTGRDTOP));
 
             CreateMap<Rifa, RifaPatchDTO>().ReverseMap();
-            CreateMap<EditarRifa, Rifa>();
+            CreateMap<EditarRifaDTOs, Rifa>();
             //PREMIOS
             CreateMap<PrizeCreationDTOs, PrizeDTO>();
             CreateMap<PrizeDTO, Prize>();

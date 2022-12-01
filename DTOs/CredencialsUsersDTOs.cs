@@ -2,7 +2,7 @@
 
 namespace LD_EC_PiaBackEnd.DTOs
 {
-    public class CredencialsUsers
+    public class CredencialsUsersDTOs
     {
         [Required]
         [EmailAddress]
