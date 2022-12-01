@@ -63,7 +63,7 @@ namespace LD_EC_PiaBackEnd.Controllers
             var Game = mapper.Map<Games>(gameDTO);
 
            
-            var rifaDB = await dbContext.Rifas.FirstOrDefaultAsync(x => x.id == gamesCreationDTOs.idRifa); 
+            var rifaDB = await dbContext.Rifas.FirstOrDefaultAsync(x => x.id_Rifa == gamesCreationDTOs.idRifa); 
             if (rifaDB == null)
             {
                 return BadRequest("La rifa no existe");

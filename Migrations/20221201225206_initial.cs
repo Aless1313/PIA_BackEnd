@@ -52,14 +52,14 @@ namespace LD_EC_PiaBackEnd.Migrations
                 name: "Rifas",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    id_Rifa = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nombre_Rifa = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     available_rifa = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rifas", x => x.id);
+                    table.PrimaryKey("PK_Rifas", x => x.id_Rifa);
                 });
 
             migrationBuilder.CreateTable(
@@ -195,7 +195,7 @@ namespace LD_EC_PiaBackEnd.Migrations
                     id_Prize = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     id_rifa = table.Column<int>(type: "int", nullable: false),
-                    rifaid = table.Column<int>(type: "int", nullable: true),
+                    rifaid_Rifa = table.Column<int>(type: "int", nullable: true),
                     name_prize = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     available_prize = table.Column<bool>(type: "bit", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -204,10 +204,10 @@ namespace LD_EC_PiaBackEnd.Migrations
                 {
                     table.PrimaryKey("PK_Prizes", x => x.id_Prize);
                     table.ForeignKey(
-                        name: "FK_Prizes_Rifas_rifaid",
-                        column: x => x.rifaid,
+                        name: "FK_Prizes_Rifas_rifaid_Rifa",
+                        column: x => x.rifaid_Rifa,
                         principalTable: "Rifas",
-                        principalColumn: "id");
+                        principalColumn: "id_Rifa");
                 });
 
             migrationBuilder.CreateTable(
@@ -219,7 +219,7 @@ namespace LD_EC_PiaBackEnd.Migrations
                     id_players = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     playerid_players = table.Column<int>(type: "int", nullable: true),
                     id_Rifa = table.Column<int>(type: "int", nullable: false),
-                    rifaid = table.Column<int>(type: "int", nullable: true),
+                    rifaid_Rifa = table.Column<int>(type: "int", nullable: true),
                     Numero_Loteria = table.Column<int>(type: "int", nullable: false),
                     Winner = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -232,10 +232,10 @@ namespace LD_EC_PiaBackEnd.Migrations
                         principalTable: "Players",
                         principalColumn: "id_players");
                     table.ForeignKey(
-                        name: "FK_Games_Rifas_rifaid",
-                        column: x => x.rifaid,
+                        name: "FK_Games_Rifas_rifaid_Rifa",
+                        column: x => x.rifaid_Rifa,
                         principalTable: "Rifas",
-                        principalColumn: "id");
+                        principalColumn: "id_Rifa");
                 });
 
             migrationBuilder.CreateIndex(
@@ -283,9 +283,9 @@ namespace LD_EC_PiaBackEnd.Migrations
                 column: "playerid_players");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Games_rifaid",
+                name: "IX_Games_rifaid_Rifa",
                 table: "Games",
-                column: "rifaid");
+                column: "rifaid_Rifa");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Players_userId",
@@ -293,9 +293,9 @@ namespace LD_EC_PiaBackEnd.Migrations
                 column: "userId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Prizes_rifaid",
+                name: "IX_Prizes_rifaid_Rifa",
                 table: "Prizes",
-                column: "rifaid");
+                column: "rifaid_Rifa");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

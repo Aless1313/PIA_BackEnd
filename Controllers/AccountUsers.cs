@@ -108,8 +108,10 @@ namespace LD_EC_PiaBackEnd.Controllers
 
             await userManager.AddClaimAsync(user, new Claim("Admin", "True"));
 
+            
             logger.LogInformation("Se hizo Admin al usuario" +user, "con exito");
-            return NoContent();
+
+            return Ok("Se hizo admin al usuario" + user);
 
         }
 

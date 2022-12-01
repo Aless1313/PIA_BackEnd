@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LD_EC_PiaBackEnd.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221201073710_initial")]
+    [Migration("20221201225206_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,14 +48,14 @@ namespace LD_EC_PiaBackEnd.Migrations
                     b.Property<int?>("playerid_players")
                         .HasColumnType("int");
 
-                    b.Property<int?>("rifaid")
+                    b.Property<int?>("rifaid_Rifa")
                         .HasColumnType("int");
 
                     b.HasKey("id_Game");
 
                     b.HasIndex("playerid_players");
 
-                    b.HasIndex("rifaid");
+                    b.HasIndex("rifaid_Rifa");
 
                     b.ToTable("Games");
                 });
@@ -105,23 +105,23 @@ namespace LD_EC_PiaBackEnd.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("rifaid")
+                    b.Property<int?>("rifaid_Rifa")
                         .HasColumnType("int");
 
                     b.HasKey("id_Prize");
 
-                    b.HasIndex("rifaid");
+                    b.HasIndex("rifaid_Rifa");
 
                     b.ToTable("Prizes");
                 });
 
             modelBuilder.Entity("LD_EC_PiaBackEnd.Entities.Rifa", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("id_Rifa")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id_Rifa"), 1L, 1);
 
                     b.Property<bool>("available_rifa")
                         .HasColumnType("bit");
@@ -130,7 +130,7 @@ namespace LD_EC_PiaBackEnd.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("id");
+                    b.HasKey("id_Rifa");
 
                     b.ToTable("Rifas");
                 });
@@ -341,7 +341,7 @@ namespace LD_EC_PiaBackEnd.Migrations
 
                     b.HasOne("LD_EC_PiaBackEnd.Entities.Rifa", "rifa")
                         .WithMany("Games")
-                        .HasForeignKey("rifaid");
+                        .HasForeignKey("rifaid_Rifa");
 
                     b.Navigation("player");
 
@@ -361,7 +361,7 @@ namespace LD_EC_PiaBackEnd.Migrations
                 {
                     b.HasOne("LD_EC_PiaBackEnd.Entities.Rifa", "rifa")
                         .WithMany("ListPrize")
-                        .HasForeignKey("rifaid");
+                        .HasForeignKey("rifaid_Rifa");
 
                     b.Navigation("rifa");
                 });
