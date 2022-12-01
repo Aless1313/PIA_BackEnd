@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using LD_EC_PiaBackEnd.Entities;
 
 namespace LD_EC_PiaBackEnd.DTOs
 {

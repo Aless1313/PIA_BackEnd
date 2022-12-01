@@ -10,7 +10,9 @@ namespace LD_EC_PiaBackEnd.Entities
 
         [EmailAddress]
         public string email_players { get; set; }
-
+        public string idUser { get; set; }
+        public IdentityUser user { get; set; }
         public List<Games> GameList_players { get; set; }
+
     }
 }

@@ -4289,24 +4289,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Liz Elizondo\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\melis\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Liz Elizondo\\Desktop\\PIA_BackEnd\\LD-EC_PiaBackEnd.csproj",
+      "projectUniqueName": "C:\\Users\\melis\\Source\\Repos\\PIA_BackEnd\\LD-EC_PiaBackEnd.csproj",
       "projectName": "LD-EC_PiaBackEnd",
-      "projectPath": "C:\\Users\\Liz Elizondo\\Desktop\\PIA_BackEnd\\LD-EC_PiaBackEnd.csproj",
-      "packagesPath": "C:\\Users\\Liz Elizondo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Liz Elizondo\\Desktop\\PIA_BackEnd\\obj\\",
+      "projectPath": "C:\\Users\\melis\\Source\\Repos\\PIA_BackEnd\\LD-EC_PiaBackEnd.csproj",
+      "packagesPath": "C:\\Users\\melis\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\melis\\Source\\Repos\\PIA_BackEnd\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Liz Elizondo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\melis\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4314,7 +4309,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4393,7 +4387,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
