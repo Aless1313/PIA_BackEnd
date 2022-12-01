@@ -11,6 +11,6 @@ namespace LD_EC_PiaBackEnd.DTOs
         public Players player { get; set; }
         [Required]
         public int idRifa { get; set; }
-        public int noLoteria { get; set; }
+        public int Numero_Loteria { get; set; }
     }
 }

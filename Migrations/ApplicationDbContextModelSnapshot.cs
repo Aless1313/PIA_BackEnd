@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace LDECPiaBackEnd.Migrations
+namespace LD_EC_PiaBackEnd.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -17,10 +17,10 @@ namespace LDECPiaBackEnd.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "6.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("LD_EC_PiaBackEnd.Entities.Games", b =>
                 {
@@ -28,7 +28,7 @@ namespace LDECPiaBackEnd.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id_Game"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id_Game"), 1L, 1);
 
                     b.Property<int>("Numero_Loteria")
                         .HasColumnType("int");
@@ -36,24 +36,24 @@ namespace LDECPiaBackEnd.Migrations
                     b.Property<bool>("Winner")
                         .HasColumnType("bit");
 
-                    b.Property<string>("id_Player")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("id_Rifa")
                         .HasColumnType("int");
+
+                    b.Property<string>("id_players")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("playerid_players")
                         .HasColumnType("int");
 
-                    b.Property<int?>("rifaid_Rifa")
+                    b.Property<int?>("rifaid")
                         .HasColumnType("int");
 
                     b.HasKey("id_Game");
 
                     b.HasIndex("playerid_players");
 
-                    b.HasIndex("rifaid_Rifa");
+                    b.HasIndex("rifaid");
 
                     b.ToTable("Games");
                 });
@@ -64,7 +64,7 @@ namespace LDECPiaBackEnd.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id_players"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id_players"), 1L, 1);
 
                     b.Property<string>("email_players")
                         .HasColumnType("nvarchar(max)");
@@ -88,7 +88,7 @@ namespace LDECPiaBackEnd.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id_Prize"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id_Prize"), 1L, 1);
 
                     b.Property<bool>("available_prize")
                         .HasColumnType("bit");
@@ -96,30 +96,30 @@ namespace LDECPiaBackEnd.Migrations
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("id_rifa_prize")
+                    b.Property<int>("id_rifa")
                         .HasColumnType("int");
 
                     b.Property<string>("name_prize")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("rifaid_Rifa")
+                    b.Property<int?>("rifaid")
                         .HasColumnType("int");
 
                     b.HasKey("id_Prize");
 
-                    b.HasIndex("rifaid_Rifa");
+                    b.HasIndex("rifaid");
 
                     b.ToTable("Prizes");
                 });
 
             modelBuilder.Entity("LD_EC_PiaBackEnd.Entities.Rifa", b =>
                 {
-                    b.Property<int>("id_Rifa")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id_Rifa"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
                     b.Property<bool>("available_rifa")
                         .HasColumnType("bit");
@@ -128,7 +128,7 @@ namespace LDECPiaBackEnd.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("id_Rifa");
+                    b.HasKey("id");
 
                     b.ToTable("Rifas");
                 });
@@ -166,7 +166,7 @@ namespace LDECPiaBackEnd.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -256,7 +256,7 @@ namespace LDECPiaBackEnd.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -339,7 +339,7 @@ namespace LDECPiaBackEnd.Migrations
 
                     b.HasOne("LD_EC_PiaBackEnd.Entities.Rifa", "rifa")
                         .WithMany("Games")
-                        .HasForeignKey("rifaid_Rifa");
+                        .HasForeignKey("rifaid");
 
                     b.Navigation("player");
 
@@ -359,7 +359,7 @@ namespace LDECPiaBackEnd.Migrations
                 {
                     b.HasOne("LD_EC_PiaBackEnd.Entities.Rifa", "rifa")
                         .WithMany("ListPrize")
-                        .HasForeignKey("rifaid_Rifa");
+                        .HasForeignKey("rifaid");
 
                     b.Navigation("rifa");
                 });

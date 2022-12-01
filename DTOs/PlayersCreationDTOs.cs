@@ -7,7 +7,7 @@ namespace LD_EC_PiaBackEnd.DTOs
     {
         [EmailAddress]
         public string email_players { get; set; }
-        public string id_players { get; set; }
+        public string idUser { get; set; }
         public IdentityUser user { get; set; }
     }
 }

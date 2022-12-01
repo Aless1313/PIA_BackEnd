@@ -14,7 +14,7 @@ namespace LD_EC_PiaBackEnd.Utilities
             CreateMap<IdentityUser, PlayersCreationDTOs>()
                 .ForMember(dto => dto.email_players,
                     opciones => opciones.MapFrom(identityUser => identityUser.Email))
-                .ForMember(dto => dto.id_players,
+                .ForMember(dto => dto.idUser,
                     opciones => opciones.MapFrom(identityUser => identityUser.Id))
                 .ForMember(dto => dto.user,
                     opciones => opciones.MapFrom(identityUser => identityUser));
@@ -26,7 +26,7 @@ namespace LD_EC_PiaBackEnd.Utilities
                 .ForMember(getrifaDTO => getrifaDTO.prizes, opciones => opciones.MapFrom(RTGRDTO))
                 .ForMember(getrifaDTO => getrifaDTO.games, opciones => opciones.MapFrom(RTGRDTOP));
 
-            CreateMap<Rifa, RifaPatchDTO>().ReverseMap();
+           
             CreateMap<EditarRifaDTOs, Rifa>();
             //PREMIOS
             CreateMap<PrizeCreationDTOs, PrizeDTO>();
@@ -36,7 +36,7 @@ namespace LD_EC_PiaBackEnd.Utilities
             CreateMap<GamesDTOs, Games>().ReverseMap();
             CreateMap<Games, GetGamesDTOs>()
                 .ForMember(GetPlayDTO => GetPlayDTO.id, opciones => opciones.MapFrom(Part => Part.id_Game))
-                .ForMember(GetPlayDTO => GetPlayDTO.id_players, opciones => opciones.MapFrom(Part => Part.id_Player));
+                .ForMember(GetPlayDTO => GetPlayDTO.id_players, opciones => opciones.MapFrom(Part => Part.id_players));
         }
 
         private List<GetPrizeDTOs> RTGRDTO(Rifa rifa, GetRifaDTO getRifaDTO)
@@ -56,7 +56,7 @@ namespace LD_EC_PiaBackEnd.Utilities
         {
             var getpremio = new GetPrizeDTOs();
             getpremio.description = prize.description;
-            getpremio.name = prize.name_prize;
+            getpremio.name_prize = prize.name_prize;
             getpremio.available= prize.available_prize;
 
             return getpremio;
@@ -80,9 +80,9 @@ namespace LD_EC_PiaBackEnd.Utilities
             var getgames = new GetGamesDTOs();
 
             getgames.id = games.id_Game;
-            getgames.id_players = games.id_Player;
-            getgames.idRifa = games.id_Rifa;
-            getgames.noLoteria = games.Numero_Loteria;
+            getgames.id_players = games.id_players;
+            getgames.id_Rifa = games.id_Rifa;
+            getgames.Numero_Loteria = games.Numero_Loteria;
             getgames.Winner = games.Winner;
 
             return getgames;

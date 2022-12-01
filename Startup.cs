@@ -94,7 +94,14 @@ namespace LD_EC_PiaBackEnd
             services.AddResponseCaching();
             services.AddTransient<GlobalExceptionFilter>();
 
-            
+            services.AddResponseCaching();
+            services.AddTransient<GlobalExceptionFilter>();
+
+            services.AddAutoMapper(typeof(Startup));
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

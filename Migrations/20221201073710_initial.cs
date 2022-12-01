@@ -3,12 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace LDECPiaBackEnd.Migrations
+namespace LD_EC_PiaBackEnd.Migrations
 {
-    /// <inheritdoc />
     public partial class initial : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -54,14 +52,14 @@ namespace LDECPiaBackEnd.Migrations
                 name: "Rifas",
                 columns: table => new
                 {
-                    idRifa = table.Column<int>(name: "id_Rifa", type: "int", nullable: false)
+                    id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nombreRifa = table.Column<string>(name: "nombre_Rifa", type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    availablerifa = table.Column<bool>(name: "available_rifa", type: "bit", nullable: false)
+                    nombre_Rifa = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    available_rifa = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rifas", x => x.idRifa);
+                    table.PrimaryKey("PK_Rifas", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -174,15 +172,15 @@ namespace LDECPiaBackEnd.Migrations
                 name: "Players",
                 columns: table => new
                 {
-                    idplayers = table.Column<int>(name: "id_players", type: "int", nullable: false)
+                    id_players = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    emailplayers = table.Column<string>(name: "email_players", type: "nvarchar(max)", nullable: true),
+                    email_players = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     idUser = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     userId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Players", x => x.idplayers);
+                    table.PrimaryKey("PK_Players", x => x.id_players);
                     table.ForeignKey(
                         name: "FK_Players_AspNetUsers_userId",
                         column: x => x.userId,
@@ -194,50 +192,50 @@ namespace LDECPiaBackEnd.Migrations
                 name: "Prizes",
                 columns: table => new
                 {
-                    idPrize = table.Column<int>(name: "id_Prize", type: "int", nullable: false)
+                    id_Prize = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    idrifaprize = table.Column<int>(name: "id_rifa_prize", type: "int", nullable: false),
-                    rifaidRifa = table.Column<int>(name: "rifaid_Rifa", type: "int", nullable: true),
-                    nameprize = table.Column<string>(name: "name_prize", type: "nvarchar(max)", nullable: false),
-                    availableprize = table.Column<bool>(name: "available_prize", type: "bit", nullable: false),
+                    id_rifa = table.Column<int>(type: "int", nullable: false),
+                    rifaid = table.Column<int>(type: "int", nullable: true),
+                    name_prize = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    available_prize = table.Column<bool>(type: "bit", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Prizes", x => x.idPrize);
+                    table.PrimaryKey("PK_Prizes", x => x.id_Prize);
                     table.ForeignKey(
-                        name: "FK_Prizes_Rifas_rifaid_Rifa",
-                        column: x => x.rifaidRifa,
+                        name: "FK_Prizes_Rifas_rifaid",
+                        column: x => x.rifaid,
                         principalTable: "Rifas",
-                        principalColumn: "id_Rifa");
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Games",
                 columns: table => new
                 {
-                    idGame = table.Column<int>(name: "id_Game", type: "int", nullable: false)
+                    id_Game = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    idPlayer = table.Column<string>(name: "id_Player", type: "nvarchar(max)", nullable: false),
-                    playeridplayers = table.Column<int>(name: "playerid_players", type: "int", nullable: true),
-                    idRifa = table.Column<int>(name: "id_Rifa", type: "int", nullable: false),
-                    rifaidRifa = table.Column<int>(name: "rifaid_Rifa", type: "int", nullable: true),
-                    NumeroLoteria = table.Column<int>(name: "Numero_Loteria", type: "int", nullable: false),
+                    id_players = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    playerid_players = table.Column<int>(type: "int", nullable: true),
+                    id_Rifa = table.Column<int>(type: "int", nullable: false),
+                    rifaid = table.Column<int>(type: "int", nullable: true),
+                    Numero_Loteria = table.Column<int>(type: "int", nullable: false),
                     Winner = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Games", x => x.idGame);
+                    table.PrimaryKey("PK_Games", x => x.id_Game);
                     table.ForeignKey(
                         name: "FK_Games_Players_playerid_players",
-                        column: x => x.playeridplayers,
+                        column: x => x.playerid_players,
                         principalTable: "Players",
                         principalColumn: "id_players");
                     table.ForeignKey(
-                        name: "FK_Games_Rifas_rifaid_Rifa",
-                        column: x => x.rifaidRifa,
+                        name: "FK_Games_Rifas_rifaid",
+                        column: x => x.rifaid,
                         principalTable: "Rifas",
-                        principalColumn: "id_Rifa");
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -285,9 +283,9 @@ namespace LDECPiaBackEnd.Migrations
                 column: "playerid_players");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Games_rifaid_Rifa",
+                name: "IX_Games_rifaid",
                 table: "Games",
-                column: "rifaid_Rifa");
+                column: "rifaid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Players_userId",
@@ -295,12 +293,11 @@ namespace LDECPiaBackEnd.Migrations
                 column: "userId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Prizes_rifaid_Rifa",
+                name: "IX_Prizes_rifaid",
                 table: "Prizes",
-                column: "rifaid_Rifa");
+                column: "rifaid");
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

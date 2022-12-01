@@ -8,6 +8,6 @@ namespace LD_EC_PiaBackEnd.DTOs
         [Required]
         public int idRifa { get; set; }
         [Required]
-        public int noLoteria { get; set; }
+        public int Numero_Loteria { get; set; }
     }
 }

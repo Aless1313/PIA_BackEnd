@@ -46,11 +46,12 @@ namespace LD_EC_PiaBackEnd.Controllers
             }
             return mapper.Map<List<GetRifaDTO>>(RifaInfo);
         }
+
         [AllowAnonymous]
         [HttpGet("{id:int}")]
         public async Task<ActionResult<GetRifaDTO>> GetbyId(int id)
         {
-            var RifaInfo = await dbContext.Rifas.FirstOrDefaultAsync(x => x.id_Rifa == id);
+            var RifaInfo = await dbContext.Rifas.FirstOrDefaultAsync(x => x.id == id);
 
             if (RifaInfo == null)
             {
@@ -88,36 +89,16 @@ namespace LD_EC_PiaBackEnd.Controllers
             return Ok("Rifa creada");
         }
 
-        [HttpPatch("{idRifa:int}", Name = "Vigencia")]
-        [Authorize(Policy = "AdminPolicy")]
-        public async Task<IActionResult> Vigencia(int idRifa, JsonPatchDocument<RifaPatchDTO> rifaPatch)
-        {
-            if (rifaPatch == null) return BadRequest();
-            var rifaInfo = await dbContext.Rifas.FirstOrDefaultAsync(x => x.id_Rifa == idRifa);
-            if (rifaInfo == null) return NotFound();
-
-            var rifaDTO = mapper.Map<RifaPatchDTO>(rifaInfo);
-            
-            rifaPatch.ApplyTo(rifaDTO, ModelState); 
-
-            var isOk = TryValidateModel(rifaDTO);
-            if (!isOk) return BadRequest(ModelState);
-
-            mapper.Map(rifaDTO, rifaInfo);
-            await dbContext.SaveChangesAsync();
-            return NoContent();
-        }
-
         [HttpPost("Prize")]
         [Authorize(Policy = "AdminPolicy")]
         public async Task<IActionResult> PostPrize(PrizeCreationDTOs prizeDTOs)
         {
-            var idRifa = prizeDTOs.idRifa;
+            var idRifa = prizeDTOs.id_Rifa;
 
             if (prizeDTOs == null) return BadRequest();
             var rifaInfo = await dbContext.Rifas
                 .Include(rifa => rifa.ListPrize)
-                .FirstOrDefaultAsync(x => x.id_Rifa == idRifa);
+                .FirstOrDefaultAsync(x => x.id == idRifa);
             if (rifaInfo == null) return NotFound("No existe esa rifa");
 
             var prizeDTO = mapper.Map<PrizeDTO>(prizeDTOs);
@@ -160,11 +141,13 @@ namespace LD_EC_PiaBackEnd.Controllers
         [Authorize(Policy = "AdminPolicy")]
         public async Task<IActionResult> Delete(int idRifa)
         {
-            var exist = await dbContext.Rifas.AnyAsync(x => x.id_Rifa == idRifa);
+            var exist = await dbContext.Rifas.AnyAsync(x => x.id == idRifa);
+
             if (!exist) return NotFound("Sin coincidencias");
+
             dbContext.Remove(new Rifa
             {
-                id_Rifa = idRifa
+                id = idRifa
             });
             await dbContext.SaveChangesAsync();
             return NoContent();
@@ -176,7 +159,7 @@ namespace LD_EC_PiaBackEnd.Controllers
         {
             var rifaInfo = await dbContext.Rifas
                 .Include(rifa => rifa.Games).Include(rifa => rifa.ListPrize)
-                .FirstOrDefaultAsync(rifa => rifa.id_Rifa == editarRifaDTOs.id);
+                .FirstOrDefaultAsync(rifa => rifa.id == editarRifaDTOs.id_Rifa);
             if (rifaInfo == null)
             {
                 return NotFound("No existe una rifa con ese id");
@@ -239,11 +222,11 @@ namespace LD_EC_PiaBackEnd.Controllers
         [HttpGet("Ganador")]
         public async Task<ActionResult<WinnerCard>> Winner(int idRifa)
         {
-            var rifaInfo = await dbContext.Rifas.Where(x => x.id_Rifa == idRifa).FirstOrDefaultAsync();
+            var rifaInfo = await dbContext.Rifas.Where(x => x.id == idRifa).FirstOrDefaultAsync();
             if (rifaInfo == null) return BadRequest();
             var games = await dbContext.Games.Where(x => x.id_Rifa == idRifa).ToListAsync();
             if (games.Count() == 0) return BadRequest();
-            var prizeInfo = await dbContext.Prizes.Where(x => x.id_rifa_prize == idRifa && x.available_prize == true).ToListAsync();
+            var prizeInfo = await dbContext.Prizes.Where(x => x.id_rifa == idRifa && x.available_prize == true).ToListAsync();
 
             var random = new Random();
             var ganador = games.OrderBy(x => random.Next()).Take(1).FirstOrDefault();
@@ -254,14 +237,14 @@ namespace LD_EC_PiaBackEnd.Controllers
 
             await dbContext.SaveChangesAsync();
 
-            var player = await dbContext.Players.Where(x => x.idUser == ganador.id_Player).FirstOrDefaultAsync();
+            var player = await dbContext.Players.Where(x => x.idUser == ganador.id_players).FirstOrDefaultAsync();
 
             CartasInfo Lista = new CartasInfo();
             List<Card> Cartas = Lista.GetCartas();
 
-            Card winnerCard = Cartas[Ganador.id_rifa_prize];
+            Card winnerCard = Cartas[Ganador.id_rifa];
             GetPrizeDTOs prize = new GetPrizeDTOs();
-            prize.name = Ganador.name_prize;
+            prize.name_prize = Ganador.name_prize;
             prize.available = true;
             prize.description = Ganador.description;
 

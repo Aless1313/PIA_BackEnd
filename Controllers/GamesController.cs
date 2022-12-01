@@ -40,6 +40,7 @@ namespace LD_EC_PiaBackEnd.Controllers
             return mapper.Map<List<GetGamesDTOs>>(lista);
         }
 
+
         [HttpPost("RegistroNumero")]
         public async Task<ActionResult> Post(GamesCreationDTOs gamesCreationDTOs)
         {
@@ -51,7 +52,7 @@ namespace LD_EC_PiaBackEnd.Controllers
             var email = emailClaim.Value;
             var user = await userManager.FindByNameAsync(email);
 
-            if (gamesCreationDTOs.noLoteria < 0 || gamesCreationDTOs.noLoteria > 54)
+            if (gamesCreationDTOs.Numero_Loteria < 0 || gamesCreationDTOs.Numero_Loteria > 54)
                 return BadRequest("Solo se aceptan numeros del 1 al 54");
 
             var gameDTO = mapper.Map<GamesDTOs>(gamesCreationDTOs);
@@ -62,17 +63,16 @@ namespace LD_EC_PiaBackEnd.Controllers
             var Game = mapper.Map<Games>(gameDTO);
 
            
-            var rifaDB = await dbContext.Rifas.FirstOrDefaultAsync(x => x.id_Rifa == gamesCreationDTOs.idRifa); 
+            var rifaDB = await dbContext.Rifas.FirstOrDefaultAsync(x => x.id == gamesCreationDTOs.idRifa); 
             if (rifaDB == null)
             {
-
                 return BadRequest("La rifa no existe");
             }
             else
             {
                 Game.rifa = rifaDB;
                 var existeTarjeta = await dbContext.Games.AnyAsync(
-                        GameRifa => GameRifa.Numero_Loteria == gamesCreationDTOs.noLoteria
+                        GameRifa => GameRifa.Numero_Loteria == gamesCreationDTOs.Numero_Loteria
                         && GameRifa.id_Rifa == gamesCreationDTOs.idRifa
                     );
                 if (!existeTarjeta)

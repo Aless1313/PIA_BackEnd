@@ -11,7 +11,7 @@ namespace LD_EC_PiaBackEnd.Entities
         public int id_Game { get; set; }
 
         [Required]
-        public string id_Player { get; set; }
+        public string id_players { get; set; }
 
         public Players player { get; set; }
 

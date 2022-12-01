@@ -8,7 +8,7 @@ namespace LD_EC_PiaBackEnd.Entities
         public int id_Prize { get; set; }
 
         [Required]
-        public int id_rifa_prize { get; set; }
+        public int id_rifa { get; set; }
         public Rifa rifa { get; set; }
 
         [Required]

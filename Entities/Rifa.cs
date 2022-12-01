@@ -5,8 +5,7 @@ namespace LD_EC_PiaBackEnd.Entities
 {
     public class Rifa
     {
-        [Key]
-        public int id_Rifa { get; set; }
+        public int id { get; set; }
 
         [StringLength(maximumLength:50, ErrorMessage = "El campo excede de caracteres")]
         public string nombre_Rifa { get; set; }

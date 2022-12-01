@@ -7,8 +7,8 @@ namespace LD_EC_PiaBackEnd.DTOs
     {
         public int id { get; set; }
         public string id_players { get; set; }
-        public int idRifa { get; set; }
-        public int noLoteria { get; set; }
+        public int id_Rifa { get; set; }
+        public int Numero_Loteria { get; set; }
         public bool Winner { get; set; }
     }
 }

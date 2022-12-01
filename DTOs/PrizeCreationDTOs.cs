@@ -5,10 +5,10 @@ namespace LD_EC_PiaBackEnd.DTOs
     public class PrizeCreationDTOs
     {
         [Required]
-        public int idRifa { get; set; }
+        public int id_Rifa { get; set; }
         [Required]
         [StringLength(99)]
-        public string name { get; set; }
+        public string name_prize { get; set; }
         [Required]
         [StringLength(99)]
         public string description { get; set; }
