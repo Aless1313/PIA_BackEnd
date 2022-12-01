@@ -87,7 +87,7 @@ namespace LD_EC_PiaBackEnd.Controllers
                 }
             }
 
-            return Ok("Numero de loteria registrado con exito");
+            return Ok("Numero de loteria registrado con exito" );
         }
 
         [HttpDelete("{id:int}")]

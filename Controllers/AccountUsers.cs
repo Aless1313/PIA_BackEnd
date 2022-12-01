@@ -59,13 +59,13 @@ namespace LD_EC_PiaBackEnd.Controllers
                 dbContext.Add(playermap);
                 await dbContext.SaveChangesAsync();
 
-                logger.LogInformation("User creado y guardado con token");
+                logger.LogInformation("Usuario creado y guardado con token");
                 logger.LogInformation(token.ToString());
                 return token;
             }
             else
             {
-                logger.LogInformation("Error al crear user");
+                logger.LogInformation("Error al crear el usuario, verifique que los datos sean validos");
                 return BadRequest(result.Errors);
             }
         }
@@ -83,8 +83,7 @@ namespace LD_EC_PiaBackEnd.Controllers
             }
             else
             {
-                logger.LogInformation("Credenciales invalidas");
-                return BadRequest("Credenciales invalidas");
+                return BadRequest("Credenciales invalidas, verifique sus datos");
             }
         }
 
@@ -98,6 +97,7 @@ namespace LD_EC_PiaBackEnd.Controllers
             {
                 email = mail
             };
+            logger.LogInformation("Se ha creado su nuevo token con exito");
             return await BuildToken(credentials);
         }
 
@@ -108,7 +108,9 @@ namespace LD_EC_PiaBackEnd.Controllers
 
             await userManager.AddClaimAsync(user, new Claim("Admin", "True"));
 
+            logger.LogInformation("Se hizo Admin al usuario" +user, "con exito");
             return NoContent();
+
         }
 
         [HttpPost("QuitarAdmin")]
@@ -118,6 +120,7 @@ namespace LD_EC_PiaBackEnd.Controllers
 
             await userManager.RemoveClaimAsync(user, new Claim("Admin", "True"));
 
+            logger.LogInformation("Se elimino el Administrador al usuario" +user, "con exito");
             return NoContent();
         }
 

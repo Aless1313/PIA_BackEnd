@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "I1wWytwXZB7V7tBlQcGsm73+Mcj62MVoMCkooFUNPas=",
+  "Hash": "rmK4032EUMgNj7/Q6OqUOQBUH2RVgcRIGqRS8ierJzo=",
   "Source": "LD-EC_PiaBackEnd",
   "BasePath": "_content/LD-EC_PiaBackEnd",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "LD-EC_PiaBackEnd\\wwwroot",
       "Source": "LD-EC_PiaBackEnd",
-      "ContentRoot": "C:\\Users\\Liz Elizondo\\Desktop\\PIA_BackEnd\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\melis\\Source\\Repos\\PIA_BackEnd\\wwwroot\\",
       "BasePath": "_content/LD-EC_PiaBackEnd",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Liz Elizondo\\Desktop\\PIA_BackEnd\\wwwroot\\log.txt",
+      "Identity": "C:\\Users\\melis\\Source\\Repos\\PIA_BackEnd\\wwwroot\\log.txt",
       "SourceId": "LD-EC_PiaBackEnd",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Liz Elizondo\\Desktop\\PIA_BackEnd\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\melis\\Source\\Repos\\PIA_BackEnd\\wwwroot\\",
       "BasePath": "_content/LD-EC_PiaBackEnd",
       "RelativePath": "log.txt",
       "AssetKind": "All",

@@ -25,7 +25,7 @@ namespace LD_EC_PiaBackEnd.Entities
         {
             if(Numero_Loteria < 1 || Numero_Loteria > 54)
             {
-                yield return new ValidationResult("El numero esta fuera de los disponibles", new string[] { nameof(Numero_Loteria) });
+                yield return new ValidationResult("Solo se pueden elegir numeros del 1 al 54", new string[] { nameof(Numero_Loteria) });
             }
             throw new NotImplementedException();
         }
