@@ -256,7 +256,7 @@ namespace LD_EC_PiaBackEnd.Controllers
 
             var player = await dbContext.Players.Where(x => x.idUser == ganador.id_Player).FirstOrDefaultAsync();
 
-            CartaInfo Lista = new CartaInfo();
+            CartasInfo Lista = new CartasInfo();
             List<Card> Cartas = Lista.GetCartas();
 
             Card winnerCard = Cartas[Ganador.id_rifa_prize];

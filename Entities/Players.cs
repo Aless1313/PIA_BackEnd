@@ -6,6 +6,7 @@ namespace LD_EC_PiaBackEnd.Entities
 {
     public class Players
     {
+        [Key]
         public int id_players { get; set; }
 
         [EmailAddress]

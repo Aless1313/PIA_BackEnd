@@ -17,7 +17,6 @@ namespace LD_EC_PiaBackEnd
 
         public DbSet<Rifa> Rifas { get; set; }
         public DbSet<Prize> Prizes { get; set; }
-
         public DbSet<Players> Players { get; set; } 
         public DbSet<Games> Games { get; set; }
 

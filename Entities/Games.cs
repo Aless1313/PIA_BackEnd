@@ -7,6 +7,7 @@ namespace LD_EC_PiaBackEnd.Entities
 {
     public class Games : IValidatableObject
     {
+        [Key]
         public int id_Game { get; set; }
 
         [Required]

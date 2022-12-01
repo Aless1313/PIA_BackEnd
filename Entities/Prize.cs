@@ -4,6 +4,7 @@ namespace LD_EC_PiaBackEnd.Entities
 {
     public class Prize
     {
+        [Key]
         public int id_Prize { get; set; }
 
         [Required]

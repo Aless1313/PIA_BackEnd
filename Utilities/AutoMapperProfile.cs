@@ -55,7 +55,7 @@ namespace LD_EC_PiaBackEnd.Utilities
         private GetPrizeDTOs getpremiodto(Prize prize)
         {
             var getpremio = new GetPrizeDTOs();
-            getpremio.description = prize.descripcion;
+            getpremio.description = prize.description;
             getpremio.name = prize.name_prize;
             getpremio.available= prize.available_prize;
 
